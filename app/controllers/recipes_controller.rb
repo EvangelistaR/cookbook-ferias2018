@@ -10,14 +10,13 @@ class RecipesController < ApplicationController
 
   def create
     recipe = Recipe.create(recipe_params)
-    redirect_to root_path
+    redirect_to recipe_path(recipe.id)
   end
 
   private
 
   def recipe_params
     params.require(:recipe).permit(:title, :recipe_type, :cuisine, :difficulty, :cook_time, :ingredients, :cook_method)
-
   end
 
 end
