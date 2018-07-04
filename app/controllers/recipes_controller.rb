@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new()
+    @cuisine = Cuisine.all()
   end
 
   def create

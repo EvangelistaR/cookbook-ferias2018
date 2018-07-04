@@ -9,7 +9,7 @@
   </div>
   <div>
     <%= f.label :cuisine_id, 'Cozinha'%>
-    <%= f.collection_select(:cuisine_id, Cuisine.all, :id, :name) %>
+    <%= f.collection_select(:cuisine_id, @cuisine, :id, :name) %>
   </div>
   <div>
     <%= f.label :difficulty, 'Dificuldade'%>
