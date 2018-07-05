@@ -1,0 +1,7 @@
+<h1>Nova Cozinha</h1>
+<%=flash[:warning]%>
+<%= form_for (@cuisine) do |f|%>
+  <%= f.label :name, 'Nome' %> </h1>
+  <%= f.text_field :name %>
+  <%= f.submit 'Enviar'%>
+<% end%>
