@@ -5,19 +5,20 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new()
-    @cuisines = Cuisine.all()
+    @recipe = Recipe.new
+    @cuisines = Cuisine.all
+    @recipe_types = RecipeType.all
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
-    if @recipe.valid?
+    if @recipe.save
       flash[:sucess] = 'Receita cadastrada com sucesso'
-      @recipe.save
       redirect_to recipe_path(@recipe.id)
     else
       flash[:warning] = 'Você deve informar todos os dados da receita'
       @cuisines = Cuisine.all
+      @recipe_types = RecipeType.all
       render 'new'
     end
   end
@@ -25,6 +26,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :recipe_type, :cuisine_id, :difficulty, :cook_time, :ingredients, :cook_method)
+    params.require(:recipe).permit(:title, :recipe_type_id, :cuisine_id, :difficulty, :cook_time, :ingredients, :cook_method)
   end
 end
