@@ -10,6 +10,24 @@ class RecipesController < ApplicationController
     @recipe_types = RecipeType.all
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+    @cuisines = Cuisine.all
+    @recipe_types = RecipeType.all
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    
+    if @recipe.update(recipe_params)     
+      redirect_to @recipe
+    else
+      @cuisines = Cuisine.all
+      @recipe_types = RecipeType.all
+      render 'edit'
+    end
+  end
+
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
