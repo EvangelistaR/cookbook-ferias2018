@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :recipes
   resources :cuisines
   resources :recipe_types
+
+  get '/buscar', to: 'recipes#search'
 end

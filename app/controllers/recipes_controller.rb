@@ -16,6 +16,19 @@ class RecipesController < ApplicationController
     @recipe_types = RecipeType.all
   end
 
+  def create
+    @recipe = Recipe.new(recipe_params)
+    if @recipe.save
+      flash[:sucess] = 'Receita cadastrada com sucesso'
+      redirect_to recipe_path(@recipe.id)
+    else
+      flash[:warning] = 'Você deve informar todos os dados da receita'
+      @cuisines = Cuisine.all
+      @recipe_types = RecipeType.all
+      render 'new'
+    end
+  end
+
   def update
     @recipe = Recipe.find(params[:id])
     
@@ -28,17 +41,10 @@ class RecipesController < ApplicationController
     end
   end
 
-  def create
-    @recipe = Recipe.new(recipe_params)
-    if @recipe.save
-      flash[:sucess] = 'Receita cadastrada com sucesso'
-      redirect_to recipe_path(@recipe.id)
-    else
-      flash[:warning] = 'Você deve informar todos os dados da receita'
-      @cuisines = Cuisine.all
-      @recipe_types = RecipeType.all
-      render 'new'
-    end
+  def search
+    @txt = params[:x]
+    @txt.strip!
+    @recipes = Recipe.where(title: @txt)
   end
 
   private

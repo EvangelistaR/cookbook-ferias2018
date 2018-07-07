@@ -3,13 +3,13 @@
 
 <%= link_to 'Enviar uma receita', new_recipe_path %>
 <div>
-  <%=@cuisines.each do |cuisine| %>
+  <% @cuisines.each do |cuisine| %>
     <%= link_to cuisine.name, cuisine_path(cuisine.id) %>
   <% end%>
 </div>
 
 <div>
-  <%= @recipe_types.each do |recipe_type| %>
+  <% @recipe_types.each do |recipe_type| %>
     <%= link_to recipe_type.name, recipe_type_path(recipe_type.id) %>
   <% end %>
 </div>
@@ -25,6 +25,14 @@
     </ul>
     
   <% end %>
+</div>
+
+<div>
+  <%= form_tag("/buscar", method: "get") do %>
+    <%= label_tag(:x, "Pesquisando por: ") %>
+    <%= text_field_tag(:x) %>
+    <%= submit_tag("Pesquisar") %>
+<% end %>
 </div>
 
 
