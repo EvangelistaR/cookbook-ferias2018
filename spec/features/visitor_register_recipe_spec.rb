@@ -18,10 +18,12 @@ feature 'Visitor register recipe' do
     fill_in 'Tempo de Preparo', with: '45'
     fill_in 'Ingredientes', with: 'Trigo para quibe, cebola, tomate picado, azeite, salsinha'
     fill_in 'Como Preparar', with: 'Misturar tudo e servir. Adicione limão a gosto.'
+    #attach_file 'Foto', Rails.root.join('spec','support','bolo_de_milho.jpg')
     click_on 'Enviar'
 
 
     expect(page).to have_css('h1', text: 'Tabule')
+    # expect(page).to have_css("img[src*='bolo_de_milho.jpg']")
     expect(page).to have_css('h3', text: 'Detalhes')
     expect(page).to have_css('p', text: 'Entrada')
     expect(page).to have_css('p', text: 'Arabe')

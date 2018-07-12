@@ -8,6 +8,8 @@
 <p><%= @recipe.ingredients %></p>
 <h3>Como Preparar</h3>
 <p><%= @recipe.cook_method %></p>
+<div> </div>
+<%= image_tag @recipe.photo.url %>
 
 <%= link_to 'Voltar', root_path %>
 <%= link_to 'Editar', edit_recipe_path(@recipe)%>

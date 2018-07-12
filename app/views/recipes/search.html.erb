@@ -2,4 +2,9 @@
 <h3>Total encontrado: <%= @recipes.count%>
 <% @recipes.each do |r|%>
   <p> <%=r.title%> </p>
+  <p> <%=r.recipe_type.name%> </p>
+  <p> <%=r.cuisine.name%> </p>
+  <p> <%=r.cook_time%> Minutos </p>
+  <p> <%=r.ingredients%> </p>
+  <p> <%=r.cook_method%> </p>
 <% end%>

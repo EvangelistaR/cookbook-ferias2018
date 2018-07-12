@@ -1,5 +1,5 @@
 <%= flash[:warning] %>
-<%= form_for(@recipe) do |f|%>
+<%= form_for(@recipe, html: { multipart: true }) do |f|%>
   <div>
     <%= f.label :title, 'Título'%>
     <%= f.text_field :title %>
@@ -22,11 +22,16 @@
   </div>
   <div>
     <%= f.label :ingredients, 'Ingredientes'%>
-    <%= f.text_field :ingredients %>
+    <%= f.text_area :ingredients %>
   </div>
   <div>
     <%= f.label :cook_method, 'Como Preparar'%>
-    <%= f.text_field :cook_method %>
+    <%= f.text_area :cook_method %>
   </div>
+  <div>
+    <%= f.label :photo, 'Foto' %>
+    <%= f.file_field :photo %>
+  </div>
+
   <%= f.submit 'Enviar'%>
 <% end%>
